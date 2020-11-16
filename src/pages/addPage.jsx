@@ -1,4 +1,4 @@
-import React from "react";
+import React, {createRef} from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-html"
 import "ace-builds/src-noconflict/theme-vibrant_ink"
@@ -6,15 +6,26 @@ import "emmet-core"
 import "ace-builds/src-noconflict/ext-emmet"
 import "ace-builds/src-noconflict/mode-javascript"
 import "ace-builds/src-noconflict/mode-css"
-
-
 export class AddPage extends React.Component{
     constructor() {
         super();
+        this.htmlEditor = createRef();
+        this.handleSave = this.handleSave.bind(this);
+
     }
     handleSave(){
-        console.log("Ура")
+        let formData = new FormData();
+        formData.append('html', this.htmlEditor.current.editor.getValue())
+        fetch("http://osum2m04.beget.tech/addPage", {
+            method: 'POST',
+            body: formData
+        } )
+
+        console.log(this.htmlEditor.current.editor)
     }
+   componentDidMount() {
+        console.log("Вызвана функция")
+   }
 
     render() {
         return <div>
@@ -35,6 +46,7 @@ export class AddPage extends React.Component{
                 mode="html"
                 width="100%"
                 theme="vibrant_ink"
+                ref={this.htmlEditor}
                 setOptions={{
                     fontSize: 18,
                     enableEmmet:true
