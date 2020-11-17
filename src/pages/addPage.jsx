@@ -16,12 +16,12 @@ export class AddPage extends React.Component{
     handleSave(){
         let formData = new FormData();
         formData.append('html', this.htmlEditor.current.editor.getValue())
-        fetch("http://osum2m04.beget.tech/addPage", {
+        fetch("http://b97730ck.beget.tech/addPage", {
             method: 'POST',
             body: formData
         } )
-
-        console.log(this.htmlEditor.current.editor)
+            .then(response=>response.json())
+            .then(result=>console.log(result))
     }
    componentDidMount() {
         console.log("Вызвана функция")
