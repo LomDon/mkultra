@@ -14,6 +14,7 @@ function App() {
               <Route exact path="/" render={()=>"CMS"}/>
               <Route exact path="/pages/" render={()=><Pages/>}/>
               <Route path="/pages/addPage" render={()=><AddPage/>}/>
+                <Route path="/pages/editPage" render={()=><AddPage/>}/>
             </div>
           </div>
         </BrowserRouter>
