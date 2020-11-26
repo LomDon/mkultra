@@ -1,24 +1,26 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 
-const Tr = (props)=>{
+const Tr = (props) =>{
     return <tr>
-        <th scope="row">{props.index}</th>
+        <tn scope="row">{props.index}</tn>
         <td>{props.title}</td>
         <td>{props.name}</td>
         <td><NavLink to={"editPage/"+props.pageId}>[редактировать]</NavLink></td>
     </tr>
+
 }
 
 export class Pages extends React.Component{
     constructor() {
         super();
         this.state = {
-            pages: []
+            pages:{}
         }
     }
+
     componentDidMount() {
-        fetch("b97730ck.beget.tech/getPagesJSON")
+        fetch("http://b97730ck.beget.tech/getPagesJSON")
             .then(response=>response.json())
             .then(pages=>{
                 this.setState({
@@ -26,27 +28,25 @@ export class Pages extends React.Component{
                         return <Tr key={index} pageId={page.id} index={index+1} name={page.name} title={page.title} />
                     })
                 })
-
             })
     }
 
     render() {
         return <div>
-            <table className="table table-striped">
+            <table className="table table-striped">">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Заголовок</th>
-                    <th scope="col">Адрес</th>
-                    <th scope="col">Управление</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
                 </tr>
                 </thead>
                 <tbody>
                 {this.state.pages}
                 </tbody>
             </table>
-
-            <NavLink className="btn btn-primary" to="addPage"><i className="fas fa-plus-square"></i> Добавить страницу</NavLink>
+            <NavLink className="btn btn-primary" to="addPage">Добавить страницу</NavLink>
         </div>
     }
 }
