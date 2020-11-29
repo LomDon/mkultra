@@ -27,7 +27,7 @@ export class AddPage extends React.Component {
         formData.append('html',this.htmlEditor.current.editor.getValue())
         formData.append('css',this.cssEditor.current.editor.getValue());
         formData.append('js',this.jsEditor.current.editor.getValue());
-        fetch("http://0994.vozhzhaev.ru/addPage",{
+        fetch("http://b97730ck.beget.tech/addPage",{
             method: 'POST',
             body: formData
         })
@@ -103,7 +103,7 @@ export class AddPage extends React.Component {
             <div className="tab-pane fade" id="nav-extraHTML" role="tabpanel" aria-labelledby="nav-extraHTML-tab">
                 <div className="col-10 mx-auto my-3">
                     <div className="mb-3">
-                        <input name="name" onChange={this.handleInputChange} type="text" className="form-control" placeholder="URI страницы"/>
+                        <input  name="name" onChange={this.handleInputChange} type="text" className="form-control" placeholder="URI страницы"/>
                     </div>
                     <div className="mb-3">
                         <input name="title" onChange={this.handleInputChange} type="text" className="form-control" placeholder="Заголовок страницы"/>

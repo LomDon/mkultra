@@ -18,7 +18,7 @@ export class Pages extends React.Component{
         }
     }
     componentDidMount() {
-        fetch("http://0994.vozhzhaev.ru/getPagesJSON")
+        fetch("http://b97730ck.beget.tech/getPagesJSON")
             .then(response=>response.json())
             .then(pages=>{
                 this.setState({
