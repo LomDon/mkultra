@@ -1,0 +1,1 @@
+export const host="http://b97730ck.beget.tech/"
